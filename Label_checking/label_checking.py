@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import random
 
 # Đường dẫn đến thư mục chứa dataset.
-PWD_dataset_folder = ""  # Dien vao duong dan den folder chua dataset
+PWD_dataset_folder = "../Dataset/Phat_project-3"  # Dien vao duong dan den folder chua dataset
 
 # Số lượng ảnh mẫu để kiểm tra.
 n_sample = 20

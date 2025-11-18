@@ -6,7 +6,7 @@
 from ultralytics import YOLO
 
 # điền vào đường dẫn đến thư mục chứa dataset.
-PWD_dataset_folder = ""  # Đường dẫn đến thư mục chứa dataset
+PWD_dataset_folder = "../Dataset/Phat_project-3"  # Đường dẫn đến thư mục chứa dataset
 batch_size = 16  # Kích thước batch
 img_size = 640  # Kích thước ảnh
 

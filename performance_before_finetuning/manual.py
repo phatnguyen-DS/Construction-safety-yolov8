@@ -10,7 +10,7 @@ from ultralytics import YOLO
 import matplotlib.pyplot as plt
 
 '''--- điền vào đường dẫn đến thư mục chứa dataset. ---'''
-PWD_dataset_folder = ""  # Đường dẫn đến thư mục chứa dataset
+PWD_dataset_folder = "../Dataset/Phat_project-3"  # Đường dẫn đến thư mục chứa dataset
 n_sample = 20  # Số lượng ảnh mẫu để kiểm tra
 
 model = YOLO("yolov8s.pt")  # Load the YOLOv8 model
