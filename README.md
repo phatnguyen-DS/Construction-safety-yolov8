@@ -18,7 +18,7 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 #### **Lưu ý**: vì anotation tương đối chuẩn và dể phân biệt nên quá trình huấn luyện chỉ thực hiện với 20 epochs
 #### Demo
 <video width="480" controls>
-  <source src="https://raw.githubusercontent.com/username/repo/main/Images_Video/videoplayback.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/phatnguyen-DS/Construction-safety-yolov8/main/Images_Video/videoplayback.mp4" type="video/mp4">
   Trình duyệt của bạn không hỗ trợ video.
 </video>
 
