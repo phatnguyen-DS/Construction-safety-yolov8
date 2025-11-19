@@ -17,6 +17,6 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 
 #### **Lưu ý**: vì anotation tương đối chuẩn và dể phân biệt nên quá trình huấn luyện chỉ thực hiện với 20 epochs
 #### Demo
-<video controls src="Images_Video/videoplayback.mp4" title="Images_Video/videoplayback.mp4"></video>
+[![Demo Video](Images_Video/demo.gif)](Images_Video/videoplayback.mp4)
 #### Hiệu suất
 ![alt text](image.png)
