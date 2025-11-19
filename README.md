@@ -23,3 +23,41 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 
 #### Hiệu suất
 ![alt text](image.png)
+
+#### Kiến trúc
+YOLO-V8:.
+|   .env
+|   image.png
+|   README.md
+|   requirement.txt
+|   tree.txt
+|   
++---Dataset
+|       Get_dataset.py
+|
++---Fineturning_model
+|       Train.py
+|
++---fix_imbalanced_data
+|       fix_imbalanced_data.py
+|
++---Images_Video
+|       Screenshot 2025-11-18 204635.png
+|       videoplayback.mp4
+|
++---Image_stat
+|       Image_stat.ipynb
+|
++---Label_checking
+|       label_checking.py
+|
++---Model
+|       fine_turned.pt
+|       
++---performance_after_finetuning
+|       manual.py
+|       test_by_metric.py
+|
+\---performance_before_finetuning
+        manual.py
+        test_by_metric.py
