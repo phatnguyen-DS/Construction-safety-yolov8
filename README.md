@@ -14,33 +14,9 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 ###### - Training:
 ###### - Đánh giá mô hình:
 
-##### Triển khai
-###### - Phát triển kiến trúc hệ thống
-###### - Xây dựng hệ thống
-###### - Kiểm thử hệ thống
 
 #### **Lưu ý**: vì anotation tương đối chuẩn và dể phân biệt nên quá trình huấn luyện chỉ thực hiện với 20 epochs
-
-### Nếu bạn muốn train lại thì 
-###### B1:down source code về, mở folder YOLO-V8, thêm vào file .env ROBoflow_API_KEY
-###### B2: Cài thư viện cần thiết
-'''
-pip install -r requirement.txt
-'''
-###### B3: Tải bộ dữ liệu
-'''
-cd Dataset
-python Get_dataset.py
-'''
-###### B4: Tăng cường dữ liệu
-'''
-cd ..
-cd fix_imbalanced_data
-python fix_imbalanced_data.py
-'''
-###### B5: Training(mặc định là 100 epochs)
-'''
-cd ..
-cd Fineturning_model
-python Train.py
-'''
+#### Demo
+[text](Images_Video/videoplayback.avi)
+#### Hiệu suất
+![alt text](image.png)
