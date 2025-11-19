@@ -19,7 +19,6 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 #### Demo
 [<video width="480" controls>
   <source src="https://raw.githubusercontent.com/phatnguyen-DS/Construction-safety-yolov8/main/Images_Video/videoplayback.mp4" type="video/mp4">
-  Trình duyệt của bạn không hỗ trợ video.
 </video>](https://github.com/user-attachments/assets/cc7f7ecf-a182-4bd9-82b2-74a64979732a)
 
 #### Hiệu suất
