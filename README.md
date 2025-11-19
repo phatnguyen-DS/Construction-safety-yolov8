@@ -1,4 +1,4 @@
-### **Hệ thống giám sát an toàn lao động trong công trường kết hợp YOLO V8 **
+### **Giám sát an toàn lao động trong công trường kết hợp YOLO V8 **
 
 
 #### **Mục tiêu**: phát hiện và cảnh báo người không mang mũ bảo hộ vào cổng công trình, mục tiêu giảm sự phụ thuộc của con người khi rà soát người ra đảm bảo an toàn lao dộng, tiết kiệm nhân lực.
