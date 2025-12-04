@@ -3,11 +3,10 @@
 
 from ultralytics import YOLO
 
-'''--- điền vào đường dẫn đến thư mục chứa dataset. ---'''
-PWD_dataset_folder = ""  # Đường dẫn đến thư mục chứa dataset
-epochs = 100  # Số epoch để huấn luyện
-images_size = 640  # Kích thước ảnh
-batch_size = 16  # Kích thước batch
+PWD_dataset_folder = "../Dataset/Phat_project-3" 
+epochs = 100  
+images_size = 640  
+batch_size = 16 
 
 
 model = YOLO("yolov8s.pt")  # Load the YOLOv8 model

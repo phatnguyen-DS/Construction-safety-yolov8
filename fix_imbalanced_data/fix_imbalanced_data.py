@@ -15,36 +15,34 @@ import seaborn as sns
 from IPython.display import display
 
 
-# Đường dẫn đến thư mục chứa dataset.
-PWD_dataset_folder = "../Dataset/Phat_project-3"  # Đường dẫn đến thư mục chứa dataset
+PWD_dataset_folder = "../Dataset/Phat_project-3"
 
 # Đọc file CSV đã lưu trước đó.
 table = pd.read_csv("table.csv", index_col=0)
-# 1. Xác định số lượng ảnh hiện có cho mỗi lớp ('head', 'helmet') từ bảng thống kê table.
+
+# Xác định số lượng ảnh hiện có cho mỗi lớp ('head', 'helmet') từ bảng thống kê table.
 # Bảng DataFrame 'table' đã chứa thông tin này cho tập 'train', được sử dụng để huấn luyện.
 head_count = table.loc['0', 'train']
 helmet_count = table.loc['1', 'train']
-# 2. Xác định số lượng ảnh tối đa trong các lớp, đây sẽ là mục tiêu cân bằng.
+
+# Xác định số lượng ảnh tối đa trong các lớp, đây sẽ là mục tiêu cân bằng.
 target_count = helmet_count
 
-# 3. Tính toán số lượng ảnh cần tăng cường cho mỗi lớp ('head', 'person') bằng cách lấy số lượng ảnh mục tiêu trừ đi số lượng ảnh hiện có của lớp đó.
+# Tính toán số lượng ảnh cần tăng cường cho mỗi lớp ('head', 'person') bằng cách lấy số lượng ảnh mục tiêu trừ đi số lượng ảnh hiện có của lớp đó.
 needed_head = target_count - head_count
-
 print(f"Số lượng ảnh hiện có của lớp 'head': {head_count}")
 print(f"Số lượng ảnh hiện có của lớp 'helmet': {helmet_count}")
 print(f"Số lượng ảnh mục tiêu (của lớp 'helmet'): {target_count}")
 print(f"Số lượng ảnh cần tăng cường cho lớp 'head': {needed_head}")
 
 '''==================================='''
-
-
-# 1. Tạo một từ điển để lưu trữ đường dẫn ảnh và nhãn cho từng lớp.
+#Tạo một từ điển để lưu trữ đường dẫn ảnh và nhãn cho từng lớp.
 class_paths = {
     0: {"images": [], "labels": []},  # head
     1: {"images": [], "labels": []}   # helmet
 }
 
-# 2. Lặp qua tất cả các tệp nhãn trong thư mục huấn luyện.
+#Lặp qua tất cả các tệp nhãn trong thư mục huấn luyện.
 label_dir = f"{PWD_dataset_folder}/train/labels"
 image_dir = f"{PWD_dataset_folder}/train/images"
 
@@ -54,7 +52,6 @@ for label_filename in os.listdir(label_dir):
         image_filename = label_filename.replace(".txt", ".jpg")
         image_path = os.path.join(image_dir, image_filename)
 
-        # 3. Đọc nội dung của từng tệp nhãn để xác định các lớp có trong ảnh.
         classes_in_image = set()
         if os.path.exists(label_path):
             with open(label_path, 'r') as f:
@@ -64,7 +61,6 @@ for label_filename in os.listdir(label_dir):
                         class_id = int(parts[0])
                         classes_in_image.add(class_id)
 
-        # 4. Nếu ảnh chứa lớp 0 hoặc 1, thêm đường dẫn của nó vào từ điển.
         for class_id in class_paths.keys():
             if class_id in classes_in_image:
                 class_paths[class_id]["images"].append(image_path)
@@ -111,6 +107,7 @@ def augment_image_and_labels(image_path, label_path, num_augmentations, output_i
         base_filename = os.path.splitext(os.path.basename(image_path))[0]
 
         for i in range(num_augmentations):
+
             # Áp dụng tăng cường sử dụng Albumentations
             augmented = augmenter(image=img, bboxes=bboxes)
             augmented_img = augmented['image']
@@ -153,7 +150,7 @@ augment = A.Compose([
     A.RandomBrightnessContrast(p=0.5),
     A.Rotate(limit=20, p=0.5),
     A.HueSaturationValue(p=0.3),
-], bbox_params=A.BboxParams(format='yolo', clip=True)) # Chỉ định định dạng yolo cho bounding box và clip tọa độ
+], bbox_params=A.BboxParams(format='yolo', clip=True))
 
 # Tính toán số lượng tăng cường cần thiết cho mỗi ảnh của mỗi lớp
 num_head_images = len(class_paths[0]['images'])
@@ -202,7 +199,6 @@ original_train_image_dir = f"{PWD_dataset_folder}/train/images" # Corrected orig
 
 data_yaml['train'] = [original_train_image_dir, augmented_train_image_dir]
 
-
 # Lưu lại file data.yaml đã cập nhật
 with open(data_yaml_path, 'w') as f:
     yaml.dump(data_yaml, f)
@@ -211,10 +207,10 @@ print(f"Đã cập nhật {data_yaml_path} để bao gồm đường dẫn dữ 
 print("Đường dẫn 'train' mới trong data.yaml:")
 print(data_yaml['train'])
 
-
-
 '''========================================================================='''
+
 '''========================= kiem tra du lieu sau can bang ======================='''
+
 # Xác định đường dẫn đến các thư mục nhãn gốc và đã tăng cường cho tập huấn luyện.
 original_train_label_dir = f"{PWD_dataset_folder}/train/labels"
 augmented_train_label_dir = f"{PWD_dataset_folder}/train/augmented_labels"
@@ -256,24 +252,27 @@ def count(folder_path: str, tap: str):
 
   # Liệt kê tất cả các tệp trong thư mục.
   ls_dir = os.listdir(folder_path)
+
   # Tạo danh sách đường dẫn đầy đủ cho các tệp .txt trong thư mục.
   ls_path = [os.path.join(folder_path, file) for file in ls_dir if file.endswith('.txt')] # Chỉ xử lý các tệp .txt
+  
   # Lặp qua từng đường dẫn tệp nhãn.
   for path in ls_path:
     try:
+
         # Mở tệp và đọc từng dòng.
         with open(path, "r") as f:
           for line in f:
+
               # Tách các phần của dòng.
               parts = line.split()
+
               # Đảm bảo dòng không trống.
               if len(parts) > 0:
-                  # Lấy id lớp (chuỗi số nguyên) từ phần đầu tiên của dòng.
                   class_id = int(parts[0])
-                  # Kiểm tra xem class_id có nằm trong phạm vi mong đợi của chúng ta không.
                   if str(class_id) in dict_[f'{tap}']:
-                      # Tăng số lần đếm cho class_id tương ứng trong từ điển.
                       dict_[f'{tap}'][f'{class_id}'] +=1
+
     # Bắt ngoại lệ nếu có lỗi khi đọc tệp nhãn.
     except Exception as e:
         print(f"Lỗi khi đọc tệp nhãn {path}: {e}")
@@ -287,7 +286,6 @@ count(augmented_train_label_dir, "train")
 # Gọi hàm count cho thư mục nhãn validation và test.
 count(val_label_dir, "val")
 count(test_label_dir, "test")
-
 
 # Tạo một bảng pandas DataFrame từ dict_ để hiển thị số lượng lớp cho mỗi tập dữ liệu.
 table = pd.DataFrame(dict_)
