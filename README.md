@@ -20,5 +20,5 @@ tình huống: mỗi khi có người ra vào công trình, cần có người r
 </video>https://github.com/user-attachments/assets/cc7f7ecf-a182-4bd9-82b2-74a64979732a
 
 #### Hiệu suất
-![alt text](image.png)
+![alt text](Images_Video/Screenshot 2025-11-18 204635.png)
 
